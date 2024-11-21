@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: banana
   icon: {fileID: 1185569730, guid: 969c308eedd1d354c91a4d95132e1f4f, type: 3}
-  itemPrefab: {fileID: 4433008502870059529, guid: 719886733afd882479f5beb15ae96751, type: 3}
+  itemPrefab: {fileID: 1636851566603426, guid: 29f26d2a30243e14e9c8922118fd5a01, type: 3}
   maxAllowed: 99

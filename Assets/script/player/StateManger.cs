@@ -67,6 +67,7 @@ public class StateManger : MonoBehaviour
                 if (carController != null)
                 {
                     carController.enabled = true;
+                    Debug.Log("asd");
                 }
             }
         }

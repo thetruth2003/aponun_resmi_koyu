@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 2292820700273917784}
   - component: {fileID: 2292820700272819608}
   - component: {fileID: 3067981789799561133}
+  - component: {fileID: 3384471818415256404}
+  - component: {fileID: 7912942461583186365}
+  - component: {fileID: 8688580088539992700}
+  - component: {fileID: 4340427435897824388}
   m_Layer: 0
   m_Name: Vegetable_box_04
   m_TagString: Untagged
@@ -26,9 +30,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2292820700270879576}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3445529657213023792}
   - {fileID: 1594562921572390616}
@@ -71,7 +77,6 @@ Transform:
   - {fileID: 6192870745652857863}
   - {fileID: 4857590789661519153}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2292820700273917784
 MeshFilter:
@@ -92,6 +97,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -130,9 +136,92 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2292820700270879576}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: c7f4c91f4155f6848929d6e4d7455e8e, type: 3}
+--- !u!54 &3384471818415256404
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292820700270879576}
   serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7912942461583186365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292820700270879576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0b18645ffddb44ead407a3f459a00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 0}
+  rb: {fileID: 0}
+--- !u!114 &8688580088539992700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292820700270879576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334870c622a7fdd4fa8cadd335c913d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &4340427435897824388
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292820700270879576}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c7f4c91f4155f6848929d6e4d7455e8e, type: 3}
@@ -141,6 +230,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -192,6 +282,9 @@ PrefabInstance:
       value: Cucumber_02 (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &2122382563985012867 stripped
 Transform:
@@ -203,6 +296,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -254,6 +348,9 @@ PrefabInstance:
       value: Cucumber_03 (16)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &3984571390645708244 stripped
 Transform:
@@ -265,6 +362,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -316,6 +414,9 @@ PrefabInstance:
       value: Cucumber_02 (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &1815321020250759565 stripped
 Transform:
@@ -327,6 +428,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -378,6 +480,9 @@ PrefabInstance:
       value: Cucumber_03 (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &3539463251825259670 stripped
 Transform:
@@ -389,6 +494,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -440,6 +546,9 @@ PrefabInstance:
       value: Cucumber_03 (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &4365099485902883006 stripped
 Transform:
@@ -451,6 +560,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -502,6 +612,9 @@ PrefabInstance:
       value: Cucumber_02 (15)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &1564311352575377784 stripped
 Transform:
@@ -513,6 +626,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -564,6 +678,9 @@ PrefabInstance:
       value: Cucumber_02 (16)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &864387931036265584 stripped
 Transform:
@@ -575,6 +692,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -626,6 +744,9 @@ PrefabInstance:
       value: Cucumber_02 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &784769788113201840 stripped
 Transform:
@@ -637,6 +758,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -688,6 +810,9 @@ PrefabInstance:
       value: Cucumber_03 (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &2907130594868091454 stripped
 Transform:
@@ -699,6 +824,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -750,6 +876,9 @@ PrefabInstance:
       value: Cucumber_02 (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &263362115989006304 stripped
 Transform:
@@ -761,6 +890,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -812,6 +942,9 @@ PrefabInstance:
       value: Cucumber_02 (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &162592408399756578 stripped
 Transform:
@@ -823,6 +956,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -874,6 +1008,9 @@ PrefabInstance:
       value: Cucumber_03 (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &1490430294525028422 stripped
 Transform:
@@ -885,6 +1022,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -936,6 +1074,9 @@ PrefabInstance:
       value: Cucumber_03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &1594562921572390616 stripped
 Transform:
@@ -947,6 +1088,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -998,6 +1140,9 @@ PrefabInstance:
       value: Cucumber_03 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &1338335704211226129 stripped
 Transform:
@@ -1009,6 +1154,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -1060,6 +1206,9 @@ PrefabInstance:
       value: Cucumber_02 (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &4223535064563961312 stripped
 Transform:
@@ -1071,6 +1220,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -1122,6 +1272,9 @@ PrefabInstance:
       value: Cucumber_02 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &3903085727402085084 stripped
 Transform:
@@ -1133,6 +1286,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -1184,6 +1338,9 @@ PrefabInstance:
       value: Cucumber_02 (17)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &3637841868097336850 stripped
 Transform:
@@ -1195,6 +1352,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -1246,6 +1404,9 @@ PrefabInstance:
       value: Cucumber_03 (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &1962493856657383908 stripped
 Transform:
@@ -1257,6 +1418,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -1308,6 +1470,9 @@ PrefabInstance:
       value: Cucumber_03 (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &347426265342960720 stripped
 Transform:
@@ -1319,6 +1484,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -1370,6 +1536,9 @@ PrefabInstance:
       value: Cucumber_02 (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &3179095627745000250 stripped
 Transform:
@@ -1381,6 +1550,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -1432,6 +1602,9 @@ PrefabInstance:
       value: Cucumber_02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &3445529657213023792 stripped
 Transform:
@@ -1443,6 +1616,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -1494,6 +1668,9 @@ PrefabInstance:
       value: Cucumber_03 (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &117804080129531752 stripped
 Transform:
@@ -1505,6 +1682,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -1556,6 +1734,9 @@ PrefabInstance:
       value: Cucumber_02 (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &2953006128163256118 stripped
 Transform:
@@ -1567,6 +1748,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -1618,6 +1800,9 @@ PrefabInstance:
       value: Cucumber_03 (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &73982607006518248 stripped
 Transform:
@@ -1629,6 +1814,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -1680,6 +1866,9 @@ PrefabInstance:
       value: Cucumber_02 (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &2425550584198855227 stripped
 Transform:
@@ -1691,6 +1880,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -1742,6 +1932,9 @@ PrefabInstance:
       value: Cucumber_03 (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &814429578982510113 stripped
 Transform:
@@ -1753,6 +1946,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -1804,6 +1998,9 @@ PrefabInstance:
       value: Cucumber_03 (18)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &8383808533051008703 stripped
 Transform:
@@ -1815,6 +2012,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -1866,6 +2064,9 @@ PrefabInstance:
       value: Cucumber_03 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &8559912247705623586 stripped
 Transform:
@@ -1877,6 +2078,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -1928,6 +2130,9 @@ PrefabInstance:
       value: Cucumber_02 (19)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &6192870745652857863 stripped
 Transform:
@@ -1939,6 +2144,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -1990,6 +2196,9 @@ PrefabInstance:
       value: Cucumber_02 (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &6037867006017421677 stripped
 Transform:
@@ -2001,6 +2210,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -2052,6 +2262,9 @@ PrefabInstance:
       value: Cucumber_02 (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &5576451584766975231 stripped
 Transform:
@@ -2063,6 +2276,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -2114,6 +2328,9 @@ PrefabInstance:
       value: Cucumber_02 (18)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &5761835806812789965 stripped
 Transform:
@@ -2125,6 +2342,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -2188,6 +2406,9 @@ PrefabInstance:
       value: Cucumber_02 (20)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &4857590789661519153 stripped
 Transform:
@@ -2199,6 +2420,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -2250,6 +2472,9 @@ PrefabInstance:
       value: Cucumber_03 (17)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &7662353512684092095 stripped
 Transform:
@@ -2261,6 +2486,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -2312,6 +2538,9 @@ PrefabInstance:
       value: Cucumber_03 (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &7781601434948952745 stripped
 Transform:
@@ -2323,6 +2552,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -2374,6 +2604,9 @@ PrefabInstance:
       value: Cucumber_02 (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &4757946762190880270 stripped
 Transform:
@@ -2385,6 +2618,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -2436,6 +2670,9 @@ PrefabInstance:
       value: Cucumber_03 (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &6055217669036264308 stripped
 Transform:
@@ -2447,6 +2684,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -2498,6 +2736,9 @@ PrefabInstance:
       value: Cucumber_03 (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &6822754795758727697 stripped
 Transform:
@@ -2509,6 +2750,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 3792253904843512901, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
@@ -2560,6 +2802,9 @@ PrefabInstance:
       value: Cucumber_03 (15)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c9bf1d70b003941ad7347005545718, type: 3}
 --- !u!4 &6615375063092395785 stripped
 Transform:
@@ -2571,6 +2816,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2292820700270526328}
     m_Modifications:
     - target: {fileID: 2152722415784299535, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
@@ -2622,6 +2868,9 @@ PrefabInstance:
       value: Cucumber_02 (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0adb52e8831c0f3419568257fc010f6f, type: 3}
 --- !u!4 &7338184804587909095 stripped
 Transform:
