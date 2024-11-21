@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6181058893280719642}
   - component: {fileID: -5637548265141102199}
   - component: {fileID: 8933149989696664912}
-  - component: {fileID: -8760869658269176409}
+  - component: {fileID: 3775668942678412874}
   m_Layer: 0
   m_Name: SM_Prop_Plant_Wheat_02
   m_TagString: Untagged
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0b18645ffddb44ead407a3f459a00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 09c6aad54cfb27d4787ef7d8ccb6b301, type: 2}
   rb: {fileID: 0}
 --- !u!114 &8933149989696664912
 MonoBehaviour:
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334870c622a7fdd4fa8cadd335c913d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!64 &-8760869658269176409
-MeshCollider:
+--- !u!65 &3775668942678412874
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -155,10 +155,9 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 6d4f4001daaf7a640bb1c960299192d4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.4678842, y: 1.1393081, z: 0.40347168}
+  m_Center: {x: -0.00000014901161, y: 0.45148382, z: 0}

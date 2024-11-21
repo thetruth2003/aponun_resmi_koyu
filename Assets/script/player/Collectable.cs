@@ -9,28 +9,20 @@ public class Collectable : MonoBehaviour
     private void Awake()
     {
         Collider collider = GetComponent<Collider>();
-        if (collider != null)
-        {
-            collider.isTrigger = true;
-        }
     }
 
     // Raycast ile çalışacak Collect() metodu
     public void Collect()
     {
-        Player player = FindObjectOfType<Player>();
-
-        if (player != null)
-        {
             Item item = GetComponent<Item>();
 
             if (item != null)
             {
                 // Eşyayı envantere ekle ve nesneyi yok et
-                player.inventoryManager.Add("backpack", item);
+                InventoryManager.Instance.Add("backpack", item);
                 Debug.Log($"{gameObject.name} toplandı!");
                 Destroy(item.gameObject);
             }
-        }
+        
     }
 }

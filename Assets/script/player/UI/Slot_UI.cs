@@ -27,10 +27,6 @@ public class Slot_UI : MonoBehaviour
         {
             Debug.LogError("Slot_UI: quantityText atanmamış!");
         }
-        if (highlight == null)
-        {
-            Debug.LogWarning("Slot_UI: highlight nesnesi atanmamış. Highlight fonksiyonu düzgün çalışmayabilir.");
-        }
     }
 
     public void SetItem(Inventory.Slot slot)

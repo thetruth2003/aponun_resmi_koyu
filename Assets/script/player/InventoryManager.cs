@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+
+    public static InventoryManager Instance;
     public Dictionary<string, Inventory> inventoryByName = new Dictionary<string, Inventory>();
 
     [Header("Backpack")]
@@ -16,6 +19,12 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
+
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
         backpack = new Inventory(backpackSlotsCount);
         toolbar = new Inventory(toolbarSlotsCount);
 

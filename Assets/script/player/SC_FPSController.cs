@@ -70,10 +70,6 @@ public class SC_FPSController : MonoBehaviour
         // Speed'i hesapla
         float speed = new Vector3(characterController.velocity.x, 0, characterController.velocity.z).magnitude;
 
-        // Speed parametresini ve koşma durumunu animator'a gönder
-        animator.SetFloat("Speed", speed);
-        animator.SetBool("isRunning", isRunning);
-
         // Player ve Kamera dönüşlerini kontrol et
         if (canMove)
         {

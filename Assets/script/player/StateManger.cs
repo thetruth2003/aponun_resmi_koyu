@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static CarController;
 
-public enum gamestate {player, Car}
+public enum gamestate { player, Car}
 public class StateManger : MonoBehaviour
 {
     public Camera playerCamera; // Oyuncunun kamerası
@@ -55,21 +56,16 @@ public class StateManger : MonoBehaviour
             // E tuşuna basıldığında oyuncuyu devre dışı bırak ve araca geç
             if (hit.collider.CompareTag("Car"))
             {
-                // Oyuncuyu devre dışı bırak
                 car = hit.collider.gameObject;
                 player.SetActive(false);
                 player.transform.parent = car.GetComponent<CarController>().playerpoint;
                 player.transform.localPosition = Vector3.zero;
                 state = gamestate.Car;
-                // Aracın CarController scriptini aktif hale getir
-                CarController carController = hit.collider.GetComponent<CarController>();
 
-                if (carController != null)
-                {
-                    carController.enabled = true;
-                    Debug.Log("asd");
-                }
+                // Araç türünü belirle
+                CarController carController = hit.collider.GetComponent<CarController>();
             }
         }
     }
+
 }
