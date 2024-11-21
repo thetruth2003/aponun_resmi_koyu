@@ -68,7 +68,23 @@ public class Inventory
             }
         }
     }
+    public List<Slot> toolbarSlots = new List<Slot>();  // Toolbar için slotlar
 
+    public void AddItemToToolbar(Item item)
+    {
+        // Toolbar'daki ilk boş slota item ekleyin
+        foreach (Slot slot in toolbarSlots)
+        {
+            if (slot.IsEmpty)
+            {
+                slot.AddItem(item.data.itemName, item.data.icon, item.data.maxAllowed, item.data.itemPrefab);
+                Debug.Log($"Item added to toolbar slot: {slot.itemName}");
+                return;
+            }
+        }
+
+        Debug.LogWarning("Toolbar is full! Cannot add the item.");
+    }
     public List<Slot> slots = new List<Slot>();
     public Slot selectedSlot = null;
 
@@ -87,31 +103,32 @@ public class Inventory
     {
         Debug.Log($"Adding item: {item.data.itemName}");
 
-        // 1. Aynı türden bir item bul ve o slota ekle
-        foreach (Slot slot in slots)
+        // 1. Aynı türden bir item bul ve o slota ekle (toolbar'da kontrol et)
+        foreach (Slot slot in toolbarSlots)  // toolbarSlots adında bir liste olduğunu varsayıyorum
         {
             if (slot.CanAddItem(item.data.itemName)) // Aynı itemName'e ve kapasiteye bakar
             {
                 slot.AddItem(item.data.itemName, item.data.icon, item.data.maxAllowed, item.data.itemPrefab);
-                Debug.Log($"Item added to existing slot: {slot.itemName}, Count: {slot.count}");
+                Debug.Log($"Item added to existing toolbar slot: {slot.itemName}, Count: {slot.count}");
                 return;
             }
         }
 
-        // 2. Eğer aynı türde bir item yoksa, boş bir slot bul ve ekle
-        foreach (Slot slot in slots)
+        // 2. Eğer aynı türde bir item yoksa, boş bir toolbar slotu bul ve ekle
+        foreach (Slot slot in toolbarSlots)  // toolbarSlots adında bir liste olduğunu varsayıyorum
         {
             if (slot.IsEmpty)
             {
                 slot.AddItem(item.data.itemName, item.data.icon, item.data.maxAllowed, item.data.itemPrefab);
-                Debug.Log($"Item added to empty slot: {slot.itemName}, Count: {slot.count}");
+                Debug.Log($"Item added to empty toolbar slot: {slot.itemName}, Count: {slot.count}");
                 return;
             }
         }
 
-        // 3. Eğer boş bir slot da yoksa, hata mesajı yazdır (isteğe bağlı)
-        Debug.LogWarning("Inventory is full! Cannot add the item.");
+        // 3. Eğer boş bir toolbar slotu da yoksa, hata mesajı yazdır (isteğe bağlı)
+        Debug.LogWarning("Toolbar is full! Cannot add the item.");
     }
+
 
     public void Remove(int index)
     {
