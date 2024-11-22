@@ -36,17 +36,26 @@ public class CarController : MonoBehaviour
         {
             Debug.Log("Attachable nesne algılandı: " + other.name);
 
-            // Eğer araç traktörse ve römork bağlı değilse
-            if (vehicleType == VehicleType.Tractor && attachedTrailer == null)
+            // Traktör tipi kontrolü ve bağlı römork yoksa işlem yap
+            if (vehicleType == VehicleType.Tractor)
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    AttachTrailer(other.gameObject);
-                    Debug.Log("Römork bağlanıyor...");
+                    // Eğer römork zaten bağlıysa, bağlantıyı kes
+                    if (attachedTrailer != null)
+                    {
+                        //DetachTrailer();
+                    }
+                    else
+                    {
+                        // Bağlı değilse, römorku bağla
+                        AttachTrailer(other.gameObject);
+                    }
                 }
             }
         }
     }
+
     private void AttachTrailer(GameObject trailer)
     {
         // Bağlama işlemini başlat
@@ -82,19 +91,21 @@ public class CarController : MonoBehaviour
         }
     }
 
-
-
     public void DetachTrailer()
     {
         if (attachedTrailer != null)
         {
             // Hinge Joint'i silerek bağlantıyı kopar
             Destroy(currentJoint);
-            attachedTrailer = null;
             currentJoint = null;
-            Debug.Log("Römork ayrıldı!");
+
+            // Bağlı römork referansını temizle
+            attachedTrailer = null;
+
+            Debug.Log("Römork bağlantısı kesildi!");
         }
     }
+
 
     void SetArmRotation(float rotationX)
     {
