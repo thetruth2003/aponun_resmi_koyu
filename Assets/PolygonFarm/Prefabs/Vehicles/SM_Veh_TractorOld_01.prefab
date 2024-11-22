@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4593786656574052}
   - component: {fileID: 33207650616547686}
   - component: {fileID: 23435393364865614}
-  - component: {fileID: 135852239821937470}
+  - component: {fileID: 5975393670035212459}
   m_Layer: 6
   m_Name: SM_Veh_TractorOld_Wheel_rl
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &135852239821937470
+--- !u!135 &5975393670035212459
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +103,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.81300443
+  m_Radius: 0.35
   m_Center: {x: 0.000000014901161, y: 0, z: 0}
 --- !u!1 &1302330322849268
 GameObject:
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 4941299852220866}
   - component: {fileID: 33785678032754168}
   - component: {fileID: 23711278806628280}
-  - component: {fileID: 135828274051614522}
+  - component: {fileID: 6147658485084379910}
   m_Layer: 6
   m_Name: SM_Veh_TractorOld_Wheel_rr
   m_TagString: Untagged
@@ -294,7 +294,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &135828274051614522
+--- !u!135 &6147658485084379910
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,7 +313,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.81300443
+  m_Radius: 0.26
   m_Center: {x: 0.000000022351742, y: 0, z: 0}
 --- !u!1 &1665900676857408
 GameObject:
@@ -409,9 +409,9 @@ GameObject:
   - component: {fileID: 4735195367629678}
   - component: {fileID: 33617391304866484}
   - component: {fileID: 23967127605266366}
-  - component: {fileID: 64344055633310280}
   - component: {fileID: 3931549583063136263}
   - component: {fileID: 3586664833677109173}
+  - component: {fileID: 836411482123282186}
   m_Layer: 6
   m_Name: SM_Veh_TractorOld_01
   m_TagString: Car
@@ -433,6 +433,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 37646909379866303}
+  - {fileID: 5166332266648456767}
   - {fileID: 1984320249573483160}
   - {fileID: 4689554810940402}
   - {fileID: 4184149118199412}
@@ -491,28 +492,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64344055633310280
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1848324045129022}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43295586141210628, guid: ad82757eafa7db646aa6e7e227f767de, type: 2}
 --- !u!54 &3931549583063136263
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -552,12 +531,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2300c36d5df2c74cbe138dc36838ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vehicleType: 0
   motorForce: 1500
   brakeForce: 1500
   maxSpeed: 100
   turnSpeed: 100
   playerpoint: {fileID: 37646909379866303}
   camera: {fileID: 4326744065570519374}
+  rotationSpeedHarvester: 100
+  blade: {fileID: 0}
+  isRotating: 0
+  arm: {fileID: 0}
+  bucket: {fileID: 0}
+  rotationSpeed: 10
+  minRotation: -50
+  maxRotation: 30
+  attachmentPoint: {fileID: 5166332266648456767}
+--- !u!65 &836411482123282186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848324045129022}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5417938, y: 1.1064698, z: 2.261695}
+  m_Center: {x: -0.027763367, y: 0.93843216, z: 0.28036833}
 --- !u!1 &1848606350861184
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +704,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4735195367629678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1141826459900114309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5166332266648456767}
+  - component: {fileID: 3657629838286107533}
+  m_Layer: 6
+  m_Name: ceki_demiri
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5166332266648456767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141826459900114309}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.003, y: 0.569, z: -1.2206}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4735195367629678}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3657629838286107533
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141826459900114309}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4326744065570519374
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,13 +783,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4326744065570519374}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23610048, y: -0, z: -0, w: 0.97172874}
-  m_LocalPosition: {x: 0, y: 3.44, z: -2.59}
+  m_LocalRotation: {x: 0.686032, y: -0, z: -0, w: 0.7275714}
+  m_LocalPosition: {x: 0, y: 4.541, z: -1.625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4735195367629678}
-  m_LocalEulerAnglesHint: {x: 27.313, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 86.634, y: 0, z: 0}
 --- !u!20 &967574758712167095
 Camera:
   m_ObjectHideFlags: 0

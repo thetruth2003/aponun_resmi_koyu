@@ -164,8 +164,9 @@ MonoBehaviour:
   turnSpeed: 100
   playerpoint: {fileID: 5407076699757489224}
   camera: {fileID: 6006149897705703361}
-  rotationSpeedHarvester: 20
+  rotationSpeedHarvester: 200
   blade: {fileID: 4124160010485230}
+  isRotating: 0
   arm: {fileID: 0}
   bucket: {fileID: 0}
   rotationSpeed: 200

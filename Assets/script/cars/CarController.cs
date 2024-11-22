@@ -25,8 +25,77 @@ public class CarController : MonoBehaviour
     public float minRotation = -50f; // X eksenindeki minimum dönüş açısı
     public float maxRotation = 30f;  // X eksenindeki maksimum dönüş açısı
     private float currentRotationX = 0; // Kolun mevcut X rotasyonu
+    public Transform attachmentPoint; // Çeki demirinin bağlanma noktası
+    private HingeJoint currentJoint; // Aktif hinge joint
+    private GameObject attachedTrailer; // Bağlanan römork
 
-    // Kolun X rotasyonunu ayarlama
+    private void OnTriggerStay(Collider other)
+    {
+        // Sadece "Attachable" tag'ine sahip nesneler için
+        if (other.CompareTag("Attachable"))
+        {
+            Debug.Log("Attachable nesne algılandı: " + other.name);
+
+            // Eğer araç traktörse ve römork bağlı değilse
+            if (vehicleType == VehicleType.Tractor && attachedTrailer == null)
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    AttachTrailer(other.gameObject);
+                    Debug.Log("Römork bağlanıyor...");
+                }
+            }
+        }
+    }
+    private void AttachTrailer(GameObject trailer)
+    {
+        // Bağlama işlemini başlat
+        attachedTrailer = trailer;
+
+        // Traktörün Rigidbody'sini parent'tan al
+        Rigidbody tractorRb = GetComponentInParent<Rigidbody>();  // Traktörün Rigidbody'sini bul
+
+        if (tractorRb != null)
+        {
+            // Römorka Hinge Joint ekle ve traktöre bağla
+            HingeJoint hingeJoint = trailer.AddComponent<HingeJoint>();
+
+            // Hinge Joint'i traktörün Rigidbody'sine bağla
+            hingeJoint.connectedBody = tractorRb;
+
+            // Bağlanma noktası olarak çekiş demirini kullan
+            hingeJoint.anchor = attachmentPoint.localPosition;
+
+            // Bağlantı ekseni (genellikle Y ekseni)
+            hingeJoint.axis = Vector3.up;
+
+            // Ekleme sonrası römorku doğru şekilde bağla
+            currentJoint = hingeJoint;
+
+            Debug.Log("Römork bağlandı!");
+            Debug.Log("Traktör Rigidbody: " + tractorRb);
+            Debug.Log("Hinge Joint bağlandı. Connected Body: " + hingeJoint.connectedBody);
+        }
+        else
+        {
+            Debug.LogWarning("Traktör Rigidbody'si bulunamadı!");
+        }
+    }
+
+
+
+    public void DetachTrailer()
+    {
+        if (attachedTrailer != null)
+        {
+            // Hinge Joint'i silerek bağlantıyı kopar
+            Destroy(currentJoint);
+            attachedTrailer = null;
+            currentJoint = null;
+            Debug.Log("Römork ayrıldı!");
+        }
+    }
+
     void SetArmRotation(float rotationX)
     {
         arm.localRotation = Quaternion.Euler(rotationX, arm.localRotation.eulerAngles.y, arm.localRotation.eulerAngles.z);
@@ -48,7 +117,6 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();  // Rigidbody referansını al
         rb.drag = 2f;  // Aracın sürüklenmesini kontrol et
-
     }
 
     void Update()
@@ -66,7 +134,6 @@ public class CarController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     isRotating = !isRotating; // Dönmeyi başlat/durdur
-                    
                 }
 
                 // Harvester bıçaklarını döndürme
@@ -123,7 +190,6 @@ public class CarController : MonoBehaviour
             camera.SetActive(false);
         }
     }
-
 
     private void GetInput()
     {

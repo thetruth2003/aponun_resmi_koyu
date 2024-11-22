@@ -9,6 +9,7 @@ TagManager:
   - Chest
   - Tractor
   - Excavator
+  - Attachable
   layers:
   - Default
   - TransparentFX
