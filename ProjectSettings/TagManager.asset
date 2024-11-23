@@ -10,6 +10,8 @@ TagManager:
   - Tractor
   - Excavator
   - Attachable
+  - Wheelbarrow
+  - 'GridCell '
   layers:
   - Default
   - TransparentFX

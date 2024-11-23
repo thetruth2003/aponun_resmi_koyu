@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody))]
 public class CarController : MonoBehaviour
 {
-    public enum VehicleType { Harvester, Excavator, Tractor }  // Araç türünü tanımlıyoruz
+    public enum VehicleType { Harvester, Excavator, Tractor, Wheelbarrow }  // Araç türünü tanımlıyoruz
     public VehicleType vehicleType;  // Bu araç hangi türde? (Harvester ya da Excavator)
     public float motorForce = 3000f;  // İvmelenme gücü
     public float brakeForce = 1500;  // Frenleme gücü

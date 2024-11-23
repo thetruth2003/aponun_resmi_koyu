@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: sunflawor
   icon: {fileID: -702890839, guid: 969c308eedd1d354c91a4d95132e1f4f, type: 3}
+  itemPrefab: {fileID: 0}
+  maxAllowed: 99

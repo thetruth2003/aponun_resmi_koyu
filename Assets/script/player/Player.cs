@@ -10,12 +10,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        tileManager = GameManager.instance.tileManager;
-        if (tileManager == null)
-        {
-            Debug.LogError("tileManager is not assigned!");
-        }
-
         // Eğer el nesnesi atanmadıysa, GameObject.Find ile atama yapıyoruz
         if (handObject == null)
         {

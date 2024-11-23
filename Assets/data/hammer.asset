@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: hammer
   icon: {fileID: 82369829, guid: 90ef795d7558fd1418ec4798036e6344, type: 3}
   itemPrefab: {fileID: 100000, guid: bb9dbb21f04dfcd46a15a446305dcf95, type: 3}
-  maxAllowed: 0
+  maxAllowed: 99
