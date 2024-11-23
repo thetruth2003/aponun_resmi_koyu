@@ -10,6 +10,7 @@ public class StateManger : MonoBehaviour
     public float maxDistance = 100f; // Maksimum atış mesafesi
     public LayerMask interactableLayer; // Etkileşimde bulunulacak katman
     public GameObject player; // Oyuncu karakteri
+    public GameObject Speedometer;
     public static StateManger Instance;
     public GameObject car;
     public gamestate state;
@@ -23,7 +24,7 @@ public class StateManger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Speedometer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,6 +45,7 @@ public class StateManger : MonoBehaviour
         player.transform.parent = null;
         state = gamestate.player;
         player.SetActive(true);
+        Speedometer.SetActive(false);
         car = null;
     }
     private void EnterCar()
@@ -61,7 +63,7 @@ public class StateManger : MonoBehaviour
                 player.transform.parent = car.GetComponent<CarController>().playerpoint;
                 player.transform.localPosition = Vector3.zero;
                 state = gamestate.Car;
-
+                Speedometer.SetActive(true);
                 // Araç türünü belirle
                 CarController carController = hit.collider.GetComponent<CarController>();
             }

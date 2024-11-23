@@ -8,12 +8,10 @@ public class Toolbar_UI : MonoBehaviour
     public List<Slot_UI> toolbarSlots = new List<Slot_UI>();
     private Slot_UI selectedSlot;
 
-    public GameObject handObject; // Karakterin elindeki boş GameObject
-    public Transform handTransform; // Elin pozisyonunu ayarlamak için
-
     private void Start()
     {
-        SelectSlot(0); // Oyuna başladığında ilk slot seçili olsun
+        // Başlangıçta ilk slotu seç
+        SelectSlot(0);
     }
 
     private void Update()
@@ -28,6 +26,7 @@ public class Toolbar_UI : MonoBehaviour
 
     public string GetSelectedPrefab()
     {
+        // Seçilen slotta geçerli bir eşya varsa, prefab'ı döndür
         return selectedSlot != null && selectedSlot.inventorySlot != null ? selectedSlot.inventorySlot.itemPrefab.name : null;
     }
 
@@ -42,13 +41,25 @@ public class Toolbar_UI : MonoBehaviour
 
             selectedSlot = toolbarSlots[index];
             selectedSlot.SetHighlight(true);
+
+            // GameManager ve player'ın null olmadığını kontrol et
+            if (GameManager.instance.player == null)
+            {
+                Debug.LogError("Player nesnesi GameManager içinde atanmadı!");
+                return; // Eğer player null ise, işlemi durdur
+            }
+
+            // Player'ın UpdateHandObject metodunu çağır
             GameManager.instance.player.UpdateHandObject();
 
-            // Seçili slotta bir eşya varsa el nesnesini güncelle
-            if (selectedSlot.inventorySlot != null)
+            // Seçili slotta bir eşya varsa, item adı ve prefab'ını kontrol et
+            if (selectedSlot.inventorySlot != null && selectedSlot.inventorySlot.itemPrefab != null)
             {
-                Debug.Log("Selected item: " + selectedSlot.inventorySlot.itemName); // İtem adını kontrol için
-                Debug.Log("Selected item: " + selectedSlot.inventorySlot.itemPrefab); // İtem adını kontrol için
+                Debug.Log("Selected item: " + selectedSlot.inventorySlot.itemPrefab.name);
+            }
+            else
+            {
+                Debug.Log("Seçilen slotta item yok.");
             }
 
             GameManager.instance.player.inventoryManager.toolbar.SelectSlot(index);
@@ -67,5 +78,4 @@ public class Toolbar_UI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha8)) SelectSlot(7);
         if (Input.GetKeyDown(KeyCode.Alpha9)) SelectSlot(8);
     }
-
 }

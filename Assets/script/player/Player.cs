@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -17,11 +15,28 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("tileManager is not assigned!");
         }
+
+        // Eğer el nesnesi atanmadıysa, GameObject.Find ile atama yapıyoruz
+        if (handObject == null)
+        {
+            handObject = GameObject.Find("HandObject"); // El nesnesini bul ve ata
+            if (handObject != null)
+            {
+                Debug.Log("HandObject bulundu: " + handObject.name);
+            }
+            else
+            {
+                Debug.LogError("HandObject bulunamadı!");
+            }
+        }
+        else
+        {
+            Debug.Log("HandObject zaten atanmış: " + handObject.name);
+        }
     }
 
     private void Update()
     {
-
     }
 
     public void DropItem(Item item)
@@ -45,10 +60,17 @@ public class Player : MonoBehaviour
             DropItem(item);
         }
     }
+
     private bool isUpdating = false;  // İşlem yapıldığını takip edecek bayrak
 
     public void UpdateHandObject()
     {
+        if (handObject == null)
+        {
+            Debug.LogError("HandObject null! Lütfen el nesnesini atayın.");
+            return;
+        }
+
         // Eğer elde 1'den fazla çocuk varsa, önceki nesneyi sil
         if (handObject.transform.childCount > 0)
         {
@@ -62,6 +84,7 @@ public class Player : MonoBehaviour
         {
             // Yeni bir prefab yükle (Resources klasöründen)
             GameObject newItem = Resources.Load<GameObject>($"Prefabs/{selectedItemPrefab}");
+
             if (newItem != null)
             {
                 // Yeni objeyi elde ekle
@@ -81,5 +104,4 @@ public class Player : MonoBehaviour
             Debug.Log("Seçili bir item yok.");
         }
     }
-
 }
