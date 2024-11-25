@@ -20,7 +20,6 @@ public class Crosshair : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            manager.RefreshAll();
             ChestOpen();
         }
     }
