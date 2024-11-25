@@ -32,7 +32,8 @@ public class UI_Manager : MonoBehaviour
     // Envanteri açma/kapama fonksiyonu
     public void ToggleInventoryUI()
     {
-        RefreshInventoryUI("Chest"); // Sandık envanterini yenile
+        RefreshAll();//bunun yuzunden oyunun basında envanter acılıyor unutma
+        Debug.Log("bunun yzuunden oyun basında envanter acılıyor unutma RefreshAll(); uste");
         if (inventoryPanel != null)
         {
             if (!inventoryPanel.activeSelf)
