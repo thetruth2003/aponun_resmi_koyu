@@ -14,6 +14,7 @@ public class UI_Manager : MonoBehaviour
     public static Slot_UI draggedSlot;
     public static Image draggedIcon;
     public static bool dragSingle;
+    public SC_FPSController playerMovementScript; 
 
     private void Awake()
     {
@@ -24,42 +25,23 @@ public class UI_Manager : MonoBehaviour
     {
         ToggleInventoryUI(); // Envanteri açma/kapama
     }
-
-    private void Update()
+    public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition); // Ekrandan ray oluştur
-            RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, maxDistance))
-            {
-                // Raycast'in vurduğu objenin tag'ini kontrol et
-                if (hit.collider.CompareTag("Chest"))
-                {
-                    ToggleInventoryUI(); // Sandık açıldığında envanteri aç
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            dragSingle = true; // Shift tuşu ile sürükleme tekli yapılacak
-        }
-        else
-        {
-            dragSingle = false;
-        }
     }
     // Envanteri açma/kapama fonksiyonu
     public void ToggleInventoryUI()
     {
+        RefreshInventoryUI("Chest"); // Sandık envanterini yenile
         if (inventoryPanel != null)
         {
             if (!inventoryPanel.activeSelf)
             {
-                inventoryPanel.SetActive(true); // Envanter açılacaksa aktif et
-                RefreshInventoryUI("chest"); // Sandık envanterini yenile
+                // Envanter açılacaksa
+                inventoryPanel.SetActive(true); // Envanteri aç
+
+                // Kamera ve karakter hareketini durdur
+                playerMovementScript.enabled = false;
 
                 // Mouse imlecini serbest bırak
                 Cursor.lockState = CursorLockMode.None;
@@ -67,7 +49,12 @@ public class UI_Manager : MonoBehaviour
             }
             else
             {
-                inventoryPanel.SetActive(false); // Envanter kapalıysa, envanteri kapat
+                RefreshInventoryUI("Chest"); // Sandık envanterini yenile
+                // Envanter kapatılacaksa
+                inventoryPanel.SetActive(false); // Envanteri kapat
+
+                // Kamera ve karakter hareketini tekrar etkinleştir
+                playerMovementScript.enabled = true;
 
                 // Envanter kapatıldığında imleci yeniden kilitle
                 Cursor.lockState = CursorLockMode.Locked;

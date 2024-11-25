@@ -6,17 +6,25 @@ public class Crosshair : MonoBehaviour
     public float maxDistance = 100f; // Maksimum atış mesafesi
     public LayerMask interactableLayer; // Etkileşimde bulunulacak katman
     public GameObject player; // Oyuncu karakteri
+    public DynamicGridManager gridManager;
+    public GameObject replacementPrefab; // Yerine geçecek prefab
+    public UI_Manager manager;
+    public static bool dragSingle;
 
-    private void Update()
+    public void Update()
     {
         // Fare tıklaması ile etkileşime gir
         if (Input.GetMouseButtonDown(0))
         {
             ShootRay();
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            manager.RefreshAll();
+            ChestOpen();
+        }
     }
-
-    private void ShootRay()
+    public void ShootRay()
     {
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -34,9 +42,39 @@ public class Crosshair : MonoBehaviour
                 // Nesnenin Collect metodunu çağırarak tetikle
                 collectable.Collect();
             }
+            gridManager.ChangeCell();
         }
     }
- 
+    private void ChestOpen()
+    {
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition); // Ekrandan ray oluştur
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, maxDistance))
+            {
+            // Raycast'in vurduğu objenin tag'ini kontrol et
+            if (hit.collider.CompareTag("Chest"))
+            {
+                manager.ToggleInventoryUI(); // Sandık açıldığında envanteri aç
+            }
+            else
+            {
+                manager.ToggleInventoryUI(); // Sandık açıldığında envanteri aç
+            }
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            dragSingle = true; // Shift tuşu ile sürükleme tekli yapılacak
+        }
+        else
+        {
+            dragSingle = false;
+        }
+    }
 }
+
+
+
 
 

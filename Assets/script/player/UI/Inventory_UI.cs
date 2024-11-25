@@ -15,7 +15,6 @@ public class Inventory_UI : MonoBehaviour
     {
         canvas = FindObjectOfType<Canvas>();
         inventory = GameManager.instance.player.inventoryManager.GetInventoryByName(inventoryName);
-
         SetupSlots();
         Refresh();
     }
