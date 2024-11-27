@@ -12,6 +12,8 @@ TagManager:
   - Attachable
   - Wheelbarrow
   - 'GridCell '
+  - Ground
+  - TopCollider
   layers:
   - Default
   - TransparentFX
