@@ -21,7 +21,6 @@ public class Crosshair : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             ShootRay();
-            ChangeCell();
             HitTree();
         }
         if (Input.GetMouseButtonDown(1))
@@ -109,7 +108,7 @@ public class Crosshair : MonoBehaviour
             else
             {
                 // Şartlar sağlanmadığında kullanıcıyı bilgilendir
-                Debug.Log("Hücre değiştirilemedi: Yanlış katman veya yanlış araç.");
+                Debug.Log("Ağaç değil veya elinde balta yok");
             }
         }
     }
@@ -146,7 +145,7 @@ public class Crosshair : MonoBehaviour
             else
             {
                 // Şartlar sağlanmadığında kullanıcıyı bilgilendir
-                Debug.Log("Hücre değiştirilemedi: Yanlış katman veya yanlış araç.");
+                Debug.Log("katman ground değil veya elinde hoe yok");
             }
         }
     }
@@ -164,6 +163,28 @@ public class Crosshair : MonoBehaviour
             if (clickedCell.layer == LayerMask.NameToLayer("groundcell") && toolbar.GetSelectedPrefab() == "Hammer")
             {
                 clickedCell.transform.GetChild(0).gameObject.SetActive(true); // Child objeyi aktif yap
+            }
+        }
+    }
+    public void AddSeed()
+    {
+        // Nişangah pozisyonuna göre ray oluştur
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+        // Raycast ile tıklanan hücreyi bul
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactableLayer))
+        {
+            GameObject clickedCell = hit.collider.gameObject; // Tıklanan hücreyi al
+
+            // Katman kontrolü ve seçili öğe adı kontrolü
+            if (clickedCell.layer == LayerMask.NameToLayer("SeedBox") && toolbar.GetSelectedPrefabTag() == "seed")
+            {
+                clickedCell.transform.GetChild(0).gameObject.SetActive(true); // Child objeyi aktif yap
+            }
+            else
+            {
+                // Şartlar sağlanmadığında kullanıcıyı bilgilendir
+                Debug.Log("seedbox değil yada elinde seed yok");
             }
         }
     }

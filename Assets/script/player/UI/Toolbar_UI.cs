@@ -29,6 +29,11 @@ public class Toolbar_UI : MonoBehaviour
         // Seçilen slotta geçerli bir eşya varsa, prefab'ı döndür
         return selectedSlot != null && selectedSlot.inventorySlot != null ? selectedSlot.inventorySlot.itemPrefab.name : null;
     }
+    public string GetSelectedPrefabTag()
+    {
+        // Seçilen slotta geçerli bir eşya varsa, prefab'ı döndür
+        return selectedSlot != null && selectedSlot.inventorySlot != null ? selectedSlot.inventorySlot.itemPrefab.tag : null;
+    }
 
     public void SelectSlot(int index)
     {
