@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4920827577426390}
   - component: {fileID: 33296066218913104}
   - component: {fileID: 23160628078843582}
-  - component: {fileID: 64496021554885038}
-  - component: {fileID: 64214228364707878}
-  m_Layer: 0
+  - component: {fileID: 2857449668262033931}
+  - component: {fileID: 8137143282451110972}
+  - component: {fileID: 4919793645941956080}
+  m_Layer: 8
   m_Name: SM_Env_Tree_Pear_01_grown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,8 +105,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64496021554885038
-MeshCollider:
+--- !u!65 &2857449668262033931
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -122,32 +123,53 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43478386345443500, guid: 2f828eea5fa97fd48b5f1f6351835021, type: 2}
---- !u!64 &64214228364707878
-MeshCollider:
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 2, z: 0.5}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &8137143282451110972
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314124812925230}
-  m_Material: {fileID: 0}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4919793645941956080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314124812925230}
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43901038842727530, guid: 2f828eea5fa97fd48b5f1f6351835021, type: 2}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5c93f5e3e98e84eb0346f416b978e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treeRigidbody: {fileID: 0}
+  isFalling: 0
+  shakeForce: 5
+  fallForce: 500
+  shakeDuration: 1
 --- !u!1001 &1184037679054144408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,6 +181,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -222,6 +248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.6036366
@@ -283,6 +313,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -346,6 +380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.52511173
@@ -407,6 +445,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -470,6 +512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.077
@@ -531,6 +577,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -594,6 +644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.56841666
@@ -655,6 +709,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -718,6 +776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7957566
@@ -779,6 +841,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -842,6 +908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Pear_01_Group
       objectReference: {fileID: 0}
+    - target: {fileID: 1237191015464468, guid: 431b9cff64ee2ef46b8f3b2ade75ed14, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4271309650276932, guid: 431b9cff64ee2ef46b8f3b2ade75ed14, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.68220425
@@ -903,6 +973,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -966,6 +1040,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0420988
@@ -1027,6 +1105,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1090,6 +1172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.832
@@ -1151,6 +1237,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1214,6 +1304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Pear_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.11383557
@@ -1275,6 +1369,10 @@ PrefabInstance:
     - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Pear_01 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859172095999526, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4626634077240992, guid: f63aff1f911ad9a41bb9d419f9530cb9, type: 3}
       propertyPath: m_LocalPosition.x

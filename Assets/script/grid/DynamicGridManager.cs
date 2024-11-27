@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.UIElements;
+using UnityEngine;
 
 public class DynamicGridManager : MonoBehaviour
 {
@@ -11,9 +12,9 @@ public class DynamicGridManager : MonoBehaviour
     [SerializeField] private GameObject[,] gridCells; // Hücrelerin dizisi
     [SerializeField] private float updateInterval = 0.1f; // Güncelleme aralığı
     private float timeSinceLastUpdate = 0f; // Son güncelleme zamanı
-    [SerializeField] private Crosshair crosshair; // Crosshair (nişangah) nesnesi
-    private GameObject selectedCell; // Bu değişken, seçilen hücreyi tutacak
-
+    public Crosshair crosshair; // Crosshair (nişangah) nesnesi
+    public GameObject selectedCell; // Bu değişken, seçilen hücreyi tutacak
+    public Toolbar_UI toolbar;
 
     void Start()
     {
@@ -51,7 +52,7 @@ public class DynamicGridManager : MonoBehaviour
         // Sağ tıklama ile hücreyi etkinleştir
         if (Input.GetMouseButtonDown(1))
         {
-            ActivateCellAtMousePosition(); // Fare pozisyonundaki hücreyi etkinleştir
+            crosshair.ActivateCellAtMousePosition(); // Fare pozisyonundaki hücreyi etkinleştir
         }
     }
 
@@ -107,63 +108,6 @@ public class DynamicGridManager : MonoBehaviour
                 float distance = Vector3.Distance(player.position, cell.transform.position); // Oyuncuya olan mesafeyi hesapla
                 cell.SetActive(distance <= renderDistance * cellSize); // Mesafe, renderDistance ile karşılaştır ve aktifliğini ayarla
             }
-        }
-    }
-
-    // Fare ile tıklanarak hücre değiştirilir
-    public void ChangeCell()
-    {
-        Ray ray = crosshair.playerCamera.ScreenPointToRay(Input.mousePosition); // Nişangah pozisyonuna göre ray oluştur
-        if (Physics.Raycast(ray, out RaycastHit hit, crosshair.maxDistance, crosshair.interactableLayer)) // Raycast ile tıklanan hücreyi bul
-        {
-            GameObject clickedCell = hit.collider.gameObject; // Tıklanan hücreyi al
-            if (clickedCell.layer != LayerMask.NameToLayer("ground")) // Eğer zemin katmanına ait değilse
-            {
-                Debug.Log("Sadece 'ground' katmanındaki nesneler için geçerlidir.");
-                return;
-            }
-
-            // Hücreyi sil ve yerine yeni hücreyi instantiate et
-            Vector3 cellPosition = clickedCell.transform.position;
-            Quaternion cellRotation = clickedCell.transform.rotation;
-            Vector3 cellScale = clickedCell.transform.localScale;
-
-            Destroy(clickedCell); // Eski hücreyi yok et
-            GameObject newCell = Instantiate(crosshair.replacementPrefab, cellPosition, cellRotation); // Yeni hücreyi oluştur
-            newCell.transform.localScale = cellScale; // Yeni hücrenin boyutunu eski hücreyle aynı yap
-
-            Debug.Log("Hücre başarıyla değiştirildi.");
-        }
-    }
-    // Fare tıklama ile seçilen hücrenin rengini değiştirir ve aktif hale getirir
-
-    private void ActivateCellAtMousePosition()
-    {
-        Ray ray = crosshair.playerCamera.ScreenPointToRay(Input.mousePosition); // Nişangahın ekran üzerindeki pozisyonundan ray oluştur
-        if (Physics.Raycast(ray, out RaycastHit hit, crosshair.maxDistance, crosshair.interactableLayer)) // Raycast ile vurulan nesneyi bul
-        {
-            GameObject clickedCell = hit.collider.gameObject; // Vurulan hücreyi al
-
-            // Eğer hücre zemin katmanına aitse
-            if (clickedCell.layer == LayerMask.NameToLayer("ground"))
-            {
-                clickedCell.transform.GetChild(0).gameObject.SetActive(true); // Child objeyi aktif yap
-            }
-        }
-    }
-
-    // Hücrenin collider'ını etkinleştirir
-    private bool isColliderVisible = false; // Collider'ın görünür olup olmadığını kontrol eden değişken
-
-    private void ActivateCellCollider(GameObject clickedCell)
-    {
-        Collider clickedCollider = clickedCell.GetComponent<Collider>(); // Collider'ı al
-        if (clickedCollider != null)
-        {
-            clickedCollider.enabled = true; // Collider'ı etkinleştir
-            isColliderVisible = true; // Collider'ı görünür yap
-            clickedCell.SetActive(true); // Hücreyi aktif hale getir
-            Debug.Log("Seçilen hücre kırmızıya boyandı.");
         }
     }
 }

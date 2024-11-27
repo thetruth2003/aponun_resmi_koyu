@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.UIElements;
+using UnityEngine;
 
 public class Crosshair : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Crosshair : MonoBehaviour
     public GameObject replacementPrefab; // Yerine geçecek prefab
     public UI_Manager manager;
     public static bool dragSingle;
+    public TreeFall TreeFall;
+    public Toolbar_UI toolbar;
+    public TreeFall tree;
 
     public void Update()
     {
@@ -17,6 +21,12 @@ public class Crosshair : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             ShootRay();
+            ChangeCell();
+            HitTree();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            ChangeCell();
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -41,7 +51,6 @@ public class Crosshair : MonoBehaviour
                 // Nesnenin Collect metodunu çağırarak tetikle
                 collectable.Collect();
             }
-            gridManager.ChangeCell();
         }
     }
     private void ChestOpen()
@@ -69,6 +78,93 @@ public class Crosshair : MonoBehaviour
         else
         {
             dragSingle = false;
+        }
+    }
+    public void HitTree()
+    {
+        // Nişangah pozisyonuna göre ray oluştur
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+        // Raycast ile tıklanan hücreyi bul
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactableLayer))
+        {
+            GameObject clickedCell = hit.collider.gameObject; // Tıklanan hücreyi al
+
+            // Katman kontrolü ve seçili öğe adı kontrolü
+            if (clickedCell.layer == LayerMask.NameToLayer("Tree") && toolbar.GetSelectedPrefab() == "axe")
+            {
+                // TreeFall bileşenini tıklanan objeden al
+                TreeFall tree = clickedCell.GetComponent<TreeFall>();
+
+                if (tree != null && !tree.isFalling)
+                {
+                    // Ağacı devirmek için ShakeAndFall coroutine'ini başlat
+                    StartCoroutine(tree.ShakeAndFall());
+                }
+                else
+                {
+                    Debug.Log("Bu ağaç zaten devrilmiş.");
+                }
+            }
+            else
+            {
+                // Şartlar sağlanmadığında kullanıcıyı bilgilendir
+                Debug.Log("Hücre değiştirilemedi: Yanlış katman veya yanlış araç.");
+            }
+        }
+    }
+
+
+    // Fare ile tıklanarak hücre değiştirilir
+    public void ChangeCell()
+    {
+        // Nişangah pozisyonuna göre ray oluştur
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+        // Raycast ile tıklanan hücreyi bul
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactableLayer))
+        {
+            GameObject clickedCell = hit.collider.gameObject; // Tıklanan hücreyi al
+
+            // Katman kontrolü ve seçili öğe adı kontrolü
+            if (clickedCell.layer == LayerMask.NameToLayer("ground") && toolbar.GetSelectedPrefab() == "Hoe")
+            {
+                // Hücreyi sil ve yerine yeni hücre oluştur
+                Vector3 cellPosition = clickedCell.transform.position;
+                Quaternion cellRotation = clickedCell.transform.rotation;
+                Vector3 cellScale = clickedCell.transform.localScale;
+
+                // Yeni hücreyi oluştur
+                GameObject newCell = Instantiate(replacementPrefab, cellPosition, cellRotation);
+                newCell.transform.localScale = cellScale;
+
+                // Eski hücreyi yok et
+                Destroy(clickedCell);
+
+                Debug.Log("Hücre başarıyla değiştirildi.");
+            }
+            else
+            {
+                // Şartlar sağlanmadığında kullanıcıyı bilgilendir
+                Debug.Log("Hücre değiştirilemedi: Yanlış katman veya yanlış araç.");
+            }
+        }
+    }
+
+    // Fare tıklama ile seçilen hücrenin rengini değiştirir ve aktif hale getirir
+
+    public void ActivateCellAtMousePosition()
+    {
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition); // Nişangahın ekran üzerindeki pozisyonundan ray oluştur
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactableLayer)) // Raycast ile vurulan nesneyi bul
+        {
+            GameObject clickedCell = hit.collider.gameObject; // Vurulan hücreyi al
+
+            // Eğer hücre zemin katmanına aitse
+            if (clickedCell.layer == LayerMask.NameToLayer("groundcell") && toolbar.GetSelectedPrefab() == "Hammer")
+            {
+                clickedCell.transform.GetChild(0).gameObject.SetActive(true); // Child objeyi aktif yap
+            }
         }
     }
 }
