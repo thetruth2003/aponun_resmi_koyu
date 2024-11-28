@@ -1,5 +1,6 @@
 ﻿using UnityEditor.UIElements;
 using UnityEngine;
+using System.Collections; // IEnumerator kullanabilmek için gerekli namespace
 
 public class Crosshair : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Crosshair : MonoBehaviour
     public TreeFall TreeFall;
     public Toolbar_UI toolbar;
     public TreeFall tree;
+    public GameObject WateringCan_full;
 
     public void Update()
     {
@@ -22,6 +24,8 @@ public class Crosshair : MonoBehaviour
         {
             ShootRay();
             HitTree();
+            AddSeed();
+            Watering();
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -176,17 +180,94 @@ public class Crosshair : MonoBehaviour
         {
             GameObject clickedCell = hit.collider.gameObject; // Tıklanan hücreyi al
 
-            // Katman kontrolü ve seçili öğe adı kontrolü
+            // Tıklanan hücre SeedBox katmanında mı ve seçili öğe "seed" mi kontrol et
             if (clickedCell.layer == LayerMask.NameToLayer("SeedBox") && toolbar.GetSelectedPrefabTag() == "seed")
             {
-                clickedCell.transform.GetChild(0).gameObject.SetActive(true); // Child objeyi aktif yap
+                string selectedItemUsedPrefab = toolbar.GetSelectedUsedPrefab();
+
+                if (!string.IsNullOrEmpty(selectedItemUsedPrefab))
+                {
+                    // Resources klasöründen prefab'ı yükle
+                    GameObject newItem = Resources.Load<GameObject>($"Prefabs/{selectedItemUsedPrefab}");
+
+                    if (newItem != null)
+                    {
+                        // Yeni prefab'ı hücrenin merkezine spawnla
+                        Vector3 spawnPosition = clickedCell.transform.position; // Hücrenin pozisyonu
+                        Quaternion spawnRotation = Quaternion.identity; // Varsayılan rotasyon
+
+                        Instantiate(newItem, spawnPosition, spawnRotation);
+
+                        Debug.Log($"Seed prefab spawned: {selectedItemUsedPrefab} at {spawnPosition}");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Prefab bulunamadı: {selectedItemUsedPrefab}");
+                    }
+                }
             }
             else
             {
                 // Şartlar sağlanmadığında kullanıcıyı bilgilendir
-                Debug.Log("seedbox değil yada elinde seed yok");
+                Debug.Log("Tıklanan hücre SeedBox değil veya seçili öğe 'seed' değil.");
             }
         }
+        else
+        {
+            Debug.Log("Raycast bir objeye çarpmadı.");
+        }
+    }
+    public void Watering()
+    {
+        // Nişangah pozisyonuna göre ray oluştur
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+        // Raycast ile tıklanan hücreyi bul
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactableLayer))
+        {
+            GameObject clickedCell = hit.collider.gameObject; // Tıklanan hücreyi al
+
+            // Tıklanan hücre SeedBox katmanında mı ve seçili öğe "seed" mi kontrol et
+            if (clickedCell.layer == LayerMask.NameToLayer("SeedBox") && toolbar.GetSelectedPrefab() == "WateringCan_full")
+            {
+                string selectedItemUsedPrefab = toolbar.GetSelectedUsedPrefab();
+
+                if (!string.IsNullOrEmpty(selectedItemUsedPrefab))
+                {
+                    // Resources klasöründen prefab'ı yükle
+                    GameObject newItem = Resources.Load<GameObject>($"Prefabs/{selectedItemUsedPrefab}");
+
+                    if (newItem != null)
+                    {
+                        // Yeni prefab'ı hücrenin merkezine spawnla
+                        Vector3 spawnPosition = clickedCell.transform.position; // Hücrenin pozisyonu
+                        Quaternion spawnRotation = Quaternion.identity; // Varsayılan rotasyon
+                        Instantiate(newItem, spawnPosition, spawnRotation);
+                        Debug.Log($"Seed prefab spawned: {selectedItemUsedPrefab} at {spawnPosition}");
+                        StartCoroutine(waterfall());
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Prefab bulunamadı: {selectedItemUsedPrefab}");
+                    }
+                }
+            }
+            else
+            {
+                // Şartlar sağlanmadığında kullanıcıyı bilgilendir
+                Debug.Log("Tıklanan hücre SeedBox değil veya seçili öğe 'seed' değil.");
+            }
+        }
+        else
+        {
+            Debug.Log("Raycast bir objeye çarpmadı.");
+        }
+    }
+    public IEnumerator waterfall()
+    {
+        WateringCan_full.transform.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        WateringCan_full.transform.GetChild(0).gameObject.SetActive(true);
     }
 }
 

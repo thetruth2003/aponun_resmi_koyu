@@ -9,4 +9,5 @@ public class ItemData : ScriptableObject
     public Sprite icon = null;
     public GameObject itemPrefab = null; // Prefab burada tutuluyor
     public int maxAllowed;
+    public GameObject itemUsedPrefab = null; // Prefab burada tutuluyor
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public class Inventory
@@ -13,6 +14,7 @@ public class Inventory
         public int maxAllowed;
         public GameObject itemPrefab;
         public Sprite icon;
+        public GameObject itemUsedPrefab;
 
         public Slot()
         {
@@ -20,6 +22,7 @@ public class Inventory
             count = 0;
             maxAllowed = 99;
             itemPrefab = null;
+            itemUsedPrefab = null;
         }
 
         public bool IsEmpty
@@ -36,7 +39,7 @@ public class Inventory
             return this.itemName == itemName && count < maxAllowed;
         }
 
-        public void AddItem(string itemName, Sprite icon, int maxAllowed, GameObject itemPrefab)
+        public void AddItem(string itemName, Sprite icon, int maxAllowed, GameObject itemPrefab, GameObject itemUsedPrefab)
         {
             // Aynı item türündeyse sayıyı artır, yoksa yeni item ekle
             if (this.itemName == itemName)
@@ -49,6 +52,7 @@ public class Inventory
                 this.icon = icon;
                 this.maxAllowed = maxAllowed;
                 this.itemPrefab = itemPrefab;
+                this.itemUsedPrefab = itemUsedPrefab;
                 count = 1; // Yeni item geldiğinde count 1 olur
             }
         }
@@ -64,6 +68,7 @@ public class Inventory
                     icon = null;
                     itemName = "";
                     itemPrefab = null;
+                    itemUsedPrefab = null;
                 }
             }
         }
@@ -92,7 +97,7 @@ public class Inventory
         {
             if (slot.CanAddItem(item.data.itemName)) // Aynı itemName'e ve kapasiteye bakar
             {
-                slot.AddItem(item.data.itemName, item.data.icon, item.data.maxAllowed, item.data.itemPrefab);
+                slot.AddItem(item.data.itemName, item.data.icon, item.data.maxAllowed, item.data.itemPrefab, item.data.itemUsedPrefab);
                 Debug.Log($"Item added to existing slot: {slot.itemName}, Count: {slot.count}");
                 return;
             }
@@ -103,7 +108,7 @@ public class Inventory
         {
             if (slot.IsEmpty)
             {
-                slot.AddItem(item.data.itemName, item.data.icon, item.data.maxAllowed, item.data.itemPrefab);
+                slot.AddItem(item.data.itemName, item.data.icon, item.data.maxAllowed, item.data.itemPrefab, item.data.itemUsedPrefab);
                 Debug.Log($"Item added to empty slot: {slot.itemName}, Count: {slot.count}");
                 return;
             }
@@ -151,7 +156,7 @@ public class Inventory
             {
                 if (toSlot.IsEmpty || toSlot.CanAddItem(fromSlot.itemName))
                 {
-                    toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed, fromSlot.itemPrefab);
+                    toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed, fromSlot.itemPrefab, fromSlot.itemUsedPrefab);
                     fromSlot.RemoveItem();
                 }
             }

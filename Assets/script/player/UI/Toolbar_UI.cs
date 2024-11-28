@@ -18,7 +18,6 @@ public class Toolbar_UI : MonoBehaviour
     {
         CheckAlphaNumericKeys();
     }
-
     public void SelectSlot(Slot_UI slot)
     {
         SelectSlot(slot.slotID);
@@ -33,6 +32,12 @@ public class Toolbar_UI : MonoBehaviour
     {
         // Seçilen slotta geçerli bir eşya varsa, prefab'ı döndür
         return selectedSlot != null && selectedSlot.inventorySlot != null ? selectedSlot.inventorySlot.itemPrefab.tag : null;
+    }
+    public string GetSelectedUsedPrefab()
+    {
+        return selectedSlot != null && selectedSlot.inventorySlot != null
+     ? selectedSlot.inventorySlot.itemUsedPrefab != null
+         ? selectedSlot.inventorySlot.itemUsedPrefab.name : null : null;
     }
 
     public void SelectSlot(int index)
