@@ -14,6 +14,7 @@ public class StateManger : MonoBehaviour
     public static StateManger Instance;
     public GameObject car;
     public gamestate state;
+    public GameObject stamina;
     private void Awake()
     {
         if (Instance == null)  
@@ -46,6 +47,7 @@ public class StateManger : MonoBehaviour
         state = gamestate.player;
         player.SetActive(true);
         Speedometer.SetActive(false);
+        stamina.SetActive(true);
         car = null;
     }
     private void EnterCar()
@@ -64,6 +66,7 @@ public class StateManger : MonoBehaviour
                 player.transform.localPosition = Vector3.zero;
                 state = gamestate.Car;
                 Speedometer.SetActive(true);
+                stamina.SetActive(false);
                 // Araç türünü belirle
                 CarController carController = hit.collider.GetComponent<CarController>();
             }

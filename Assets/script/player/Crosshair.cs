@@ -16,6 +16,8 @@ public class Crosshair : MonoBehaviour
     public Toolbar_UI toolbar;
     public TreeFall tree;
     public GameObject WateringCan_full;
+    private bool isMenuOpen = false; // Menü durumu
+
 
     public void Update()
     {
@@ -34,6 +36,10 @@ public class Crosshair : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             ChestOpen();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            manager.ToggleMenuUI(); // Menü aç
         }
     }
     public void ShootRay()

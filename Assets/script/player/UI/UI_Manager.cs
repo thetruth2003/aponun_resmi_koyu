@@ -8,6 +8,8 @@ public class UI_Manager : MonoBehaviour
     public Dictionary<string, Inventory_UI> inventoryUIByName = new Dictionary<string, Inventory_UI>(); // Envanterleri saklamak için sözlük
     public List<Inventory_UI> inventoryUIs; // Envanterlerin listesi
     public GameObject inventoryPanel; // Envanter paneli
+    public GameObject MenuPanel; // Envanter paneli
+    public GameObject tamina; // Envanter paneli
     public Camera playerCamera; // Oyuncunun kamerası
     public float maxDistance = 100f; // Raycast mesafesi
     public GameObject player; // Oyuncu karakteri
@@ -23,7 +25,6 @@ public class UI_Manager : MonoBehaviour
 
     private void Start()
     {
-        ToggleInventoryUI(); // Envanteri açma/kapama
     }
     public void Update()
     {
@@ -63,7 +64,29 @@ public class UI_Manager : MonoBehaviour
             }
         }
     }
-
+    public void ToggleMenuUI()
+    {
+        if (MenuPanel != null)
+        {
+            if (!MenuPanel.activeSelf)
+            {
+                // Envanter açılacaksa
+                MenuPanel.SetActive(true); // Envanteri aç
+                // Mouse imlecini serbest bırak
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = false;
+                playerMovementScript.enabled = false;
+            }
+            else
+            {
+                MenuPanel.SetActive(false); // Envanteri kapat
+                // Envanter kapatıldığında imleci yeniden kilitle
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                playerMovementScript.enabled = true;
+            }
+        }
+    }
     // Envanter UI'sını yenileme fonksiyonu
     public void RefreshInventoryUI(string inventoryName)
     {
