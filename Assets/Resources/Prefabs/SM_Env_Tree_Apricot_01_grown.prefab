@@ -183,7 +183,7 @@ MonoBehaviour:
   shakeAmount: 0.015
   isFalling: 0
   fallForce: 2
-  topCollider: {fileID: 2236517553722695163}
+  odunsacma: {fileID: 4890350289570398790, guid: 7fe10dca43b692f41ade0d5101582da7, type: 3}
 --- !u!1 &4755679546045855353
 GameObject:
   m_ObjectHideFlags: 0

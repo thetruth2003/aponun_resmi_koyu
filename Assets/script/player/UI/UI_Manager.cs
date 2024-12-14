@@ -9,7 +9,7 @@ public class UI_Manager : MonoBehaviour
     public List<Inventory_UI> inventoryUIs; // Envanterlerin listesi
     public GameObject inventoryPanel; // Envanter paneli
     public GameObject MenuPanel; // Envanter paneli
-    public GameObject tamina; // Envanter paneli
+    public GameObject Stamina; // Envanter paneli
     public Camera playerCamera; // Oyuncunun kamerası
     public float maxDistance = 100f; // Raycast mesafesi
     public GameObject player; // Oyuncu karakteri

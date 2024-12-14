@@ -172,6 +172,7 @@ MonoBehaviour:
   rotationSpeed: 200
   minRotation: -50
   maxRotation: 30
+  attachmentPoint: {fileID: 0}
 --- !u!1 &1032150980146974
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +771,8 @@ GameObject:
   - component: {fileID: 33008902868084372}
   - component: {fileID: 23462447462394590}
   - component: {fileID: 8915206886412283883}
+  - component: {fileID: 7530983859067131570}
+  - component: {fileID: 4797973739213609822}
   m_Layer: 6
   m_Name: SM_Veh_Harvester_Reel
   m_TagString: Untagged
@@ -865,6 +868,45 @@ CapsuleCollider:
   m_Height: 5.11
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7530983859067131570
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836490817041454}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4797973739213609822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836490817041454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6d51779a4761c4e89be8d305a78f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1918988244931028
 GameObject:
   m_ObjectHideFlags: 0

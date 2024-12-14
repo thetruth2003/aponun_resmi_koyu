@@ -16,6 +16,8 @@ TagManager:
   - TopCollider
   - seedpoint
   - seed
+  - socket
+  - Platform
   layers:
   - Default
   - TransparentFX

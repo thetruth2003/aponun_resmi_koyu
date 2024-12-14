@@ -36,6 +36,7 @@ public class Crosshair : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             ChestOpen();
+            Debug.Log("asd");
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
