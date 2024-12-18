@@ -23,7 +23,6 @@ public class BuildController : MonoBehaviour
                     renderer.sharedMaterial.SetColor("_Color", Color.red);
             }
 
-
             if (Physics.Raycast(ray, out hit, 10f))
             {
                 foundationPreview.transform.position = hit.point + new Vector3(3, 0.1f, 3); // Zeminden 0.1 birim yukarı
@@ -67,8 +66,14 @@ public class BuildController : MonoBehaviour
                 }
             }
         }
+
+        // Sağ tıklama ile prefab'ları "none" yap ve preview'i kapat
+        if (Input.GetMouseButtonDown(1)) // 1 sağ tık için
+        {
+            ResetPrefabs();
+        }
     }
-    
+
     public void SetFoundation(string foundationName)
     {
         // Foundation prefab'ını ayarla
@@ -83,6 +88,7 @@ public class BuildController : MonoBehaviour
             Debug.LogError("Foundation prefab bulunamadı: " + foundationName);
         }
     }
+
     public void SetFoundationPreviewName(string previewName)
     {
         GameObject loadedPreview = Resources.Load<GameObject>($"build/{previewName}");
@@ -103,4 +109,15 @@ public class BuildController : MonoBehaviour
         }
     }
 
+    // Sağ tık ile prefab'ları sıfırlama ve preview'i kapatma
+    private void ResetPrefabs()
+    {
+        foundation = null;
+        if (foundationPreview != null)
+        {
+            foundationPreview.SetActive(false);  // Preview prefab'ını kapat
+            Destroy(foundationPreview);  // Eğer aktifse, sahneden tamamen yok et
+        }
+        Debug.Log("Prefabs sıfırlandı.");
+    }
 }
