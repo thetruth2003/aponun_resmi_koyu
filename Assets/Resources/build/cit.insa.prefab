@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 4139386580268372}
   - component: {fileID: 33798031682091680}
   - component: {fileID: 23005428556885778}
-  - component: {fileID: 64927348979600228}
-  m_Layer: 0
+  - component: {fileID: -2402518362576305475}
+  m_Layer: 2
   m_Name: cit.insa
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4139386580268372
 Transform:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fdf18c58b725a2f469593ece1786d307, type: 2}
+  - {fileID: 2100000, guid: fa5d67a28f8fdaa49925bd9156ca4a5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64927348979600228
-MeshCollider:
+--- !u!65 &-2402518362576305475
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -101,13 +101,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43820541040859940, guid: e3dd5ea179af437459728a2c8293aba8, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 5, y: 1.8868942, z: 0.21453246}
+  m_Center: {x: -2.5, y: 0.60534453, z: 0.02311096}
 --- !u!1 &1363426707307816
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +118,7 @@ GameObject:
   - component: {fileID: 4402678766545092}
   - component: {fileID: 33581034402965422}
   - component: {fileID: 23305105291734452}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SM_Prop_Fence_Fancy_Gate_Door_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fdf18c58b725a2f469593ece1786d307, type: 2}
+  - {fileID: 2100000, guid: fa5d67a28f8fdaa49925bd9156ca4a5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,7 +201,7 @@ GameObject:
   - component: {fileID: 4379553074058258}
   - component: {fileID: 33111536676924504}
   - component: {fileID: 23007457737441458}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SM_Prop_Fence_Fancy_Gate_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fdf18c58b725a2f469593ece1786d307, type: 2}
+  - {fileID: 2100000, guid: fa5d67a28f8fdaa49925bd9156ca4a5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

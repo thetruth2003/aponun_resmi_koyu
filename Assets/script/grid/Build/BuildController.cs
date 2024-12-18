@@ -10,62 +10,65 @@ public class BuildController : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-
-
-        if (canBuild)
-            foundationPreview.GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Color.green);
-        else
-            foundationPreview.GetComponent<Renderer>().sharedMaterial.SetColor("_Color", Color.red);
-
-        if (Physics.Raycast(ray, out hit, 10f))
+        if (foundationPreview != null)
         {
-            foundationPreview.transform.position = hit.point + new Vector3(3, 0.1f, 3); // Zeminden 0.1 birim yukarı
-
-            if (hit.transform.tag == "Platform")
-                canBuild = false;
-            else
-                canBuild = true;
-
-            if (hit.transform.CompareTag("socket"))
+            RaycastHit hit;
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            Renderer renderer = foundationPreview.GetComponent<Renderer>();
+            if (renderer != null)
             {
-                socket = hit.transform;
                 if (canBuild)
+                    renderer.sharedMaterial.SetColor("_Color", Color.green);
+                else
+                    renderer.sharedMaterial.SetColor("_Color", Color.red);
+            }
+
+
+            if (Physics.Raycast(ray, out hit, 10f))
+            {
+                foundationPreview.transform.position = hit.point + new Vector3(3, 0.1f, 3); // Zeminden 0.1 birim yukarı
+
+                if (hit.transform.tag == "Platform")
+                    canBuild = false;
+                else
+                    canBuild = true;
+
+                if (hit.transform.CompareTag("socket"))
                 {
-                    foundationPreview.transform.position = socket.transform.position;
-                    foundationPreview.SetActive(true);
+                    socket = hit.transform;
+                    if (canBuild)
+                    {
+                        foundationPreview.transform.position = socket.transform.position;
+                        foundationPreview.SetActive(true);
+                    }
+                    else
+                    {
+                        foundationPreview.SetActive(true);
+                    }
+
+                    if (Input.GetMouseButtonDown(0) && canBuild)
+                    {
+                        GameObject spawnFoundation = Instantiate(foundation, socket.position, Quaternion.identity);
+                        Destroy(socket.gameObject);
+                    }
                 }
                 else
                 {
-                    foundationPreview.SetActive(true);
-                }
+                    if (foundationPreview != null)
+                    {
+                        foundationPreview.transform.position = hit.point;
+                        foundationPreview.SetActive(true);
+                    }
 
-                if (Input.GetMouseButtonDown(0) && canBuild)
-                {
-                    GameObject spawnFoundation = Instantiate(foundation, socket.position, Quaternion.identity);
-                    Destroy(socket.gameObject);
+                    if (Input.GetMouseButtonDown(0) && canBuild)
+                    {
+                        GameObject spawnFoundation = Instantiate(foundation, hit.point, Quaternion.identity);
+                    }
                 }
             }
-            else
-            {
-                if (foundationPreview != null)
-                {
-                    foundationPreview.transform.position = hit.point;
-                    foundationPreview.SetActive(true);
-                }
-
-                if (Input.GetMouseButtonDown(0) && canBuild)
-                {
-                    GameObject spawnFoundation = Instantiate(foundation, hit.point, Quaternion.identity);
-                }
-            }
-        }
-        else
-        {
-            foundationPreview.SetActive(true);
         }
     }
+    
     public void SetFoundation(string foundationName)
     {
         // Foundation prefab'ını ayarla

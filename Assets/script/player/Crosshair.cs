@@ -16,7 +16,7 @@ public class Crosshair : MonoBehaviour
     public Toolbar_UI toolbar;
     public TreeFall tree;
     public GameObject WateringCan_full;
-    private bool isMenuOpen = false; // Menü durumu
+
 
 
     public void Update()
@@ -32,15 +32,6 @@ public class Crosshair : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             ChangeCell();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ChestOpen();
-            Debug.Log("asd");
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            manager.ToggleMenuUI(); // Menü aç
         }
     }
     public void ShootRay()
@@ -63,33 +54,7 @@ public class Crosshair : MonoBehaviour
             }
         }
     }
-    private void ChestOpen()
-    {
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition); // Ekrandan ray oluştur
-            RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, maxDistance))
-            {
-            // Raycast'in vurduğu objenin tag'ini kontrol et
-            if (hit.collider.CompareTag("Chest"))
-            {
-                manager.ToggleInventoryUI(); // Sandık açıldığında envanteri aç
-            }
-            else
-            {
-                manager.ToggleInventoryUI(); // Sandık açıldığında envanteri aç
-            }
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            dragSingle = true; // Shift tuşu ile sürükleme tekli yapılacak
-        }
-        else
-        {
-            dragSingle = false;
-        }
-    }
     public void HitTree()
     {
         // Nişangah pozisyonuna göre ray oluştur

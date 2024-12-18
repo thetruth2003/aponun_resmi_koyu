@@ -5,13 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public ItemManager itemManager;
-    public TileManager tileManager;
     public UI_Manager uiManager;
     public StateManger stateManger;
     public Player player;
-
     public Toolbar_UI toolbarUI; // Toolbar UI referansı
 
     private void Awake()
@@ -33,13 +30,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("GameManager: ItemManager bileşeni atanmadı!");
         }
-
-        tileManager = GetComponent<TileManager>();
-        if (tileManager == null)
-        {
-            Debug.LogWarning("GameManager: TileManager bileşeni atanmadı!");
-        }
-
         uiManager = GetComponent<UI_Manager>();
         if (uiManager == null)
         {

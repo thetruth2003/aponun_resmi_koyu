@@ -13,10 +13,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        if (toolbarUI == null) Debug.LogError("Toolbar UI is not assigned in Start!");
-        
-        tileManager = GameManager.instance.tileManager;
-        if (tileManager == null) Debug.LogError("tileManager is not assigned!");   
+
     }
 
     private void Update()
